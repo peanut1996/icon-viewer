@@ -37,8 +37,8 @@ function getIconPaths(dir, baseDir, fileList = {}) {
 }
 
 const app = express();
-const iconsDir = path.join(__dirname, "src/assets");
-let iconPaths = getIconPaths(iconsDir, iconsDir);
+const iconsDir = path.join(process.cwd(), 'src/assets');
+let iconPaths = getIconPaths(iconsDir);
 
 // LiveReload server
 const liveReloadServer = livereload.createServer();
@@ -104,7 +104,6 @@ app.get("/", (req, res) => {
 });
 
 app.use('/src/assets', express.static(iconsDir));
-app.use(express.static(path.join(__dirname)));
 
 const PORT = 8000;
 app.listen(PORT, () => {
