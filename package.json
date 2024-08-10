@@ -1,6 +1,6 @@
 {
   "name": "icon-viewer",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "bin": {
     "icon": "./view.js"
   },
