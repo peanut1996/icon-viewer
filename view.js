@@ -107,6 +107,7 @@ app.get("/", (req, res) => {
         background-color: #fff;
         border-radius: 5px;
         margin-bottom: 5px;
+        transition: background-color 0.3s;
       }
       p {
         margin: 0;
@@ -146,22 +147,27 @@ app.get("/", (req, res) => {
         right: 0;
         transform: translateY(-50%);
         background-color: white;
-        border-radius: 10px 0 0 10px;
-        padding: 5px;
+        border-radius: 99px 0 0 99px;
+        padding: 10px;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        transition: transform 0.3s;
+        transition: transform 0.3s, border-radius 0.1s;
       }
       .color-display {
         width: 30px;
         height: 30px;
         border-radius: 50%;
         cursor: pointer;
-        margin-bottom: 5px;
+        border: 1px solid #ccc;
       }
       .colors {
         display: none;
         flex-direction: column;
         gap: 5px;
+        align-items: center;
+        margin-top: 20px;
+      }
+      .color-picker:hover  {
+        border-radius: 10px 0 0 10px;
       }
       .color-picker:hover .colors {
         display: flex;
@@ -171,12 +177,7 @@ app.get("/", (req, res) => {
         height: 20px;
         border-radius: 50%;
         cursor: pointer;
-      }
-      .icon {
-        background-color: white;
-        padding: 10px;
-        border-radius: 8px;
-        transition: background-color 0.3s;
+        border: 1px solid #ccc;
       }
       </style>
     </head>
@@ -225,8 +226,8 @@ app.get("/", (req, res) => {
           });
         }
         function changeIconBackgroundColor(color) {
-          document.querySelectorAll('.icon').forEach(icon => {
-            icon.style.backgroundColor = color;
+          document.querySelectorAll('img').forEach(img => {
+            img.style.backgroundColor = color;
           });
           document.getElementById('currentColor').style.backgroundColor = color;
         }
