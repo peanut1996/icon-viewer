@@ -53,6 +53,10 @@ fs.watch(iconsDir, { recursive: true }, () => {
   console.log('Icons updated');
 });
 
+app.use('/images', express.static(path.join(__dirname, 'images')));
+// Serve CSS file
+app.use(express.static(path.join(__dirname)));
+
 app.get("/", (req, res) => {
   res.send(`
     <!DOCTYPE html>
@@ -61,125 +65,8 @@ app.get("/", (req, res) => {
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <title>icons viewer</title>
-      <style>
-      body {
-        font-family: "ROBOTO", "PingFang SC", "Microsoft YaHei", sans-serif;
-        margin: 0;
-        padding: 20px;
-      }
-      .titleIcon{
-        margin: 0 auto;
-        height: 50px;
-        width: auto;
-      }
-      .folder {
-        margin-bottom: 40px;
-      }
-      .folder h2 {
-        background: linear-gradient(to right, #1D41E7 , #F42F3B);
-        opacity: 0.8;
-        color: #fff;
-        padding: 10px;
-        border-radius: 5px;
-      }
-      .container {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 20px;
-      }
-      .icon {
-        background-color: #fff;
-        padding: 10px;
-        border-radius: 10px;
-        width: 100px;
-        text-align: center;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        transition: transform 0.3s, box-shadow 0.3s;
-      }
-      .icon:hover {
-        transform: translateY(-4px);
-        box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
-      }
-      img {
-        width: 70px;
-        height: 70px;
-        cursor: pointer;
-        background-color: #fff;
-        border-radius: 5px;
-        margin-bottom: 5px;
-        transition: background-color 0.3s;
-      }
-      p {
-        margin: 0;
-        font-size: 12px;
-        word-wrap: break-word;
-      }
-      #notification {
-        visibility: hidden;
-        min-width: 250px;
-        background: linear-gradient(to right, #eebd89 , #d13abd);
-        color: #fff;
-        text-align: center;
-        border-radius: 5px;
-        padding: 10px;
-        position: fixed;
-        z-index: 1;
-        bottom: 30px;
-        left: 50%;
-        transform: translateX(-50%);
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-      }
-      #notification.show {
-        visibility: visible;
-        animation: fadein 0.5s, fadeout 0.5s 2.5s;
-      }
-      @keyframes fadein {
-        from { bottom: 20px; opacity: 0; }
-        to { bottom: 30px; opacity: 1; }
-      }
-      @keyframes fadeout {
-        from { bottom: 30px; opacity: 1; }
-        to { bottom: 40px; opacity: 0; }
-      }
-      .color-picker {
-        position: fixed;
-        top: 50%;
-        right: 0;
-        transform: translateY(-50%);
-        background-color: white;
-        border-radius: 99px 0 0 99px;
-        padding: 10px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        transition: transform 0.3s, border-radius 0.1s;
-      }
-      .color-display {
-        width: 30px;
-        height: 30px;
-        border-radius: 50%;
-        cursor: pointer;
-        border: 1px solid #ccc;
-      }
-      .colors {
-        display: none;
-        flex-direction: column;
-        gap: 5px;
-        align-items: center;
-        margin-top: 20px;
-      }
-      .color-picker:hover  {
-        border-radius: 10px 0 0 10px;
-      }
-      .color-picker:hover .colors {
-        display: flex;
-      }
-      .color {
-        width: 20px;
-        height: 20px;
-        border-radius: 50%;
-        cursor: pointer;
-        border: 1px solid #ccc;
-      }
-      </style>
+      <link rel="stylesheet" href="/styles.css">
+     
     </head>
     <body>
       <img class="titleIcon" src="/images/cute.svg" alt="">
