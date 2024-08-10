@@ -142,31 +142,41 @@ app.get("/", (req, res) => {
       }
       .color-picker {
         position: fixed;
-        bottom: 20px;
-        right: 20px;
+        top: 50%;
+        right: 0;
+        transform: translateY(-50%);
         background-color: white;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-        padding: 10px;
+        border-radius: 10px 0 0 10px;
+        padding: 5px;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         transition: transform 0.3s;
       }
-      .color-picker:hover {
-        transform: scale(1.1);
+      .color-display {
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        cursor: pointer;
+        margin-bottom: 5px;
       }
       .colors {
         display: none;
-        margin-top: 10px;
+        flex-direction: column;
+        gap: 5px;
       }
       .color-picker:hover .colors {
         display: flex;
-        gap: 10px;
       }
       .color {
         width: 20px;
         height: 20px;
         border-radius: 50%;
         cursor: pointer;
+      }
+      .icon {
+        background-color: white;
+        padding: 10px;
+        border-radius: 8px;
+        transition: background-color 0.3s;
       }
       </style>
     </head>
@@ -195,13 +205,13 @@ app.get("/", (req, res) => {
         )
         .join("")}
       <div class="color-picker">
-        Change Background
+        <div class="color-display" id="currentColor"></div>
         <div class="colors">
-          <div class="color" style="background-color: white;" onclick="changeBackgroundColor('white')"></div>
-          <div class="color" style="background-color: lightgray;" onclick="changeBackgroundColor('lightgray')"></div>
-          <div class="color" style="background-color: lightblue;" onclick="changeBackgroundColor('lightblue')"></div>
-          <div class="color" style="background-color: lightgreen;" onclick="changeBackgroundColor('lightgreen')"></div>
-          <div class="color" style="background-color: lightpink;" onclick="changeBackgroundColor('lightpink')"></div>
+          <div class="color" style="background-color: white;" onclick="changeIconBackgroundColor('white')"></div>
+          <div class="color" style="background-color: lightgray;" onclick="changeIconBackgroundColor('lightgray')"></div>
+          <div class="color" style="background-color: lightblue;" onclick="changeIconBackgroundColor('lightblue')"></div>
+          <div class="color" style="background-color: lightgreen;" onclick="changeIconBackgroundColor('lightgreen')"></div>
+          <div class="color" style="background-color: lightpink;" onclick="changeIconBackgroundColor('lightpink')"></div>
         </div>
       </div>
       <script>
@@ -214,8 +224,11 @@ app.get("/", (req, res) => {
             }, 3000);
           });
         }
-        function changeBackgroundColor(color) {
-          document.body.style.backgroundColor = color;
+        function changeIconBackgroundColor(color) {
+          document.querySelectorAll('.icon').forEach(icon => {
+            icon.style.backgroundColor = color;
+          });
+          document.getElementById('currentColor').style.backgroundColor = color;
         }
       </script>
     </body>
