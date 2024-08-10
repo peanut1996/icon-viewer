@@ -111,7 +111,7 @@ app.get("/", (req, res) => {
       p {
         margin: 0;
         font-size: 12px;
-        /*color: #ecf0f1;*/
+        word-wrap: break-word;
       }
       #notification {
         visibility: hidden;
@@ -140,6 +140,34 @@ app.get("/", (req, res) => {
         from { bottom: 30px; opacity: 1; }
         to { bottom: 40px; opacity: 0; }
       }
+      .color-picker {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        background-color: white;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        padding: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        transition: transform 0.3s;
+      }
+      .color-picker:hover {
+        transform: scale(1.1);
+      }
+      .colors {
+        display: none;
+        margin-top: 10px;
+      }
+      .color-picker:hover .colors {
+        display: flex;
+        gap: 10px;
+      }
+      .color {
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        cursor: pointer;
+      }
       </style>
     </head>
     <body>
@@ -166,6 +194,16 @@ app.get("/", (req, res) => {
       `
         )
         .join("")}
+      <div class="color-picker">
+        Change Background
+        <div class="colors">
+          <div class="color" style="background-color: white;" onclick="changeBackgroundColor('white')"></div>
+          <div class="color" style="background-color: lightgray;" onclick="changeBackgroundColor('lightgray')"></div>
+          <div class="color" style="background-color: lightblue;" onclick="changeBackgroundColor('lightblue')"></div>
+          <div class="color" style="background-color: lightgreen;" onclick="changeBackgroundColor('lightgreen')"></div>
+          <div class="color" style="background-color: lightpink;" onclick="changeBackgroundColor('lightpink')"></div>
+        </div>
+      </div>
       <script>
         function copyToClipboard(text) {
           navigator.clipboard.writeText(text).then(() => {
@@ -175,6 +213,9 @@ app.get("/", (req, res) => {
               notification.classList.remove('show');
             }, 3000);
           });
+        }
+        function changeBackgroundColor(color) {
+          document.body.style.backgroundColor = color;
         }
       </script>
     </body>
