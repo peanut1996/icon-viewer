@@ -8,10 +8,9 @@ body {
   justify-content: center;
   align-items: center;
   gap: 10px;
-  margin-bottom: 20px;
+  margin-bottom: 40px;
 }
 .titleIcon{
-  margin: 0 auto;
   height: 80px;
   width: auto;
 }
