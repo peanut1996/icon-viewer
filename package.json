@@ -1,0 +1,13 @@
+{
+  "name": "icon-viewer",
+  "version": "1.0.0",
+  "bin": {
+    "icon-viewer": "./viewIcons.js"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "open": "^8.4.0",
+    "livereload": "^0.9.3",
+    "connect-livereload": "^0.6.1"
+  }
+}
