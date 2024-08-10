@@ -38,7 +38,7 @@ function getIconPaths(dir, baseDir, fileList = {}) {
 
 const app = express();
 const iconsDir = path.join(process.cwd(), 'src/assets');
-let iconPaths = getIconPaths(iconsDir);
+let iconPaths = getIconPaths(iconsDir, iconsDir);
 
 // LiveReload server
 const liveReloadServer = livereload.createServer();
@@ -61,7 +61,6 @@ app.get("/", (req, res) => {
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <title>icons viewer</title>
-      <link rel="stylesheet" href="/styles.css">
       <style>
       body {
         font-family: "ROBOTO", "PingFang SC", "Microsoft YaHei", sans-serif;
