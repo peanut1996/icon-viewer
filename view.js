@@ -67,10 +67,10 @@ app.get("/", (req, res) => {
         margin: 0;
         padding: 20px;
       }
-      h1 {
-        text-align: center;
-        margin-bottom: 30px;
-        font-style: italic;
+      .titleIcon{
+        margin: 0 auto;
+        height: 50px;
+        width: auto;
       }
       .folder {
         margin-bottom: 40px;
@@ -182,7 +182,7 @@ app.get("/", (req, res) => {
       </style>
     </head>
     <body>
-      <h1>Seeds-pro Icons</h1>
+      <img class="titleIcon" src="/images/cute.svg" alt="">
       <div id="notification">已拷贝到剪切板~ 🎉🎉🎉</div>
       ${Object.entries(iconPaths)
         .map(
