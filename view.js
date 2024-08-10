@@ -69,7 +69,12 @@ app.get("/", (req, res) => {
      
     </head>
     <body>
-      <img class="titleIcon" src="/images/cute.svg" alt="">
+      <div class="title">
+        <img class="titleIcon" src="/images/call.svg" alt="">
+        <img class="titleIcon" src="/images/call.svg" alt="">
+        <img class="titleIcon" src="/images/call.svg" alt="">
+      </div>
+      
       <div id="notification">已拷贝到剪切板~ 🎉🎉🎉</div>
       ${Object.entries(iconPaths)
         .map(

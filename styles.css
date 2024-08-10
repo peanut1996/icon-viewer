@@ -3,9 +3,16 @@ body {
   margin: 0;
   padding: 20px;
 }
+.title{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
 .titleIcon{
   margin: 0 auto;
-  height: 50px;
+  height: 80px;
   width: auto;
 }
 .folder {
