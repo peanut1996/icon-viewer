@@ -62,6 +62,86 @@ app.get("/", (req, res) => {
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <title>icons viewer</title>
       <link rel="stylesheet" href="/styles.css">
+      <style>
+      body {
+        font-family: "ROBOTO", "PingFang SC", "Microsoft YaHei", sans-serif;
+        margin: 0;
+        padding: 20px;
+      }
+      h1 {
+        text-align: center;
+        margin-bottom: 30px;
+        font-style: italic;
+      }
+      .folder {
+        margin-bottom: 40px;
+      }
+      .folder h2 {
+        background: linear-gradient(to right, #1D41E7 , #F42F3B);
+        opacity: 0.8;
+        color: #fff;
+        padding: 10px;
+        border-radius: 5px;
+      }
+      .container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+      }
+      .icon {
+        background-color: #fff;
+        padding: 10px;
+        border-radius: 10px;
+        width: 100px;
+        text-align: center;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s, box-shadow 0.3s;
+      }
+      .icon:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+      }
+      img {
+        width: 70px;
+        height: 70px;
+        cursor: pointer;
+        background-color: #fff;
+        border-radius: 5px;
+        margin-bottom: 5px;
+      }
+      p {
+        margin: 0;
+        font-size: 12px;
+        /*color: #ecf0f1;*/
+      }
+      #notification {
+        visibility: hidden;
+        min-width: 250px;
+        background: linear-gradient(to right, #eebd89 , #d13abd);
+        color: #fff;
+        text-align: center;
+        border-radius: 5px;
+        padding: 10px;
+        position: fixed;
+        z-index: 1;
+        bottom: 30px;
+        left: 50%;
+        transform: translateX(-50%);
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+      #notification.show {
+        visibility: visible;
+        animation: fadein 0.5s, fadeout 0.5s 2.5s;
+      }
+      @keyframes fadein {
+        from { bottom: 20px; opacity: 0; }
+        to { bottom: 30px; opacity: 1; }
+      }
+      @keyframes fadeout {
+        from { bottom: 30px; opacity: 1; }
+        to { bottom: 40px; opacity: 0; }
+      }
+      </style>
     </head>
     <body>
       <h1>Seeds-pro Icons</h1>
